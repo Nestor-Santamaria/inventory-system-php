@@ -46,17 +46,6 @@ if ($route === 'login') {
             echo "Credenciales incorrectas. Inténtalo de nuevo.";
         }
 
-        /*
-        if ($email === 'admin@test.com' && $password === '1234') {
-
-            $_SESSION['user'] = $email; // Guarda el email en la sesión
-            header(('Location: ?route=dashboard')); // Redirige a un dashboard
-
-            exit;
-        } else {
-            echo "Credenciales incorrectas. Inténtalo de nuevo.";
-        }*/
-
         exit;
     }
     require 'views/login.php';
@@ -89,20 +78,7 @@ elseif ($route === 'products') {
 
     $result = $conn->query("SELECT * FROM products");
 
-    echo "<h1>Lista de productos</h1>";
-
-    echo '<a href="?route=create-product">Crear producto</a><br><br>';
-
-    // $row es un array asociativo que representa cada fila de la tabla products
-    while ($row = $result->fetch_assoc()) {
-        echo $row['name'] . '  |  ';
-        echo $row['stock'] . '  |  ';
-        echo '$' . $row['price'] . '  |  ';
-        echo '<a href="?route=edit-product&id=' . $row['id'] . '">Editar</a>';
-        echo '  |  ';
-        echo '<a href="?route=delete-product&id=' . $row['id'] . '">Eliminar</a>';
-        echo "<br>";
-    }
+    require 'views/product/products.php';
 }
 
 
@@ -129,16 +105,7 @@ elseif ($route === 'create-product') {
         exit;
     }
 
-    echo "<h1>Crear nuevo producto</h1>";
-
-    echo
-    '<form method="POST">
-            Nombre: <input type="text" name="name" required><br>
-            Stock: <input type="number" name="stock" required><br>
-            Precio: <input type="number" step="0.01" name="price" required><br>
-            <button>Crear producto</button>
-        </form>
-        ';
+    require 'views/product/create.php';
 }
 
 
@@ -197,15 +164,7 @@ elseif ($route === 'edit-product') {
 
     $product = $stmt->get_result()->fetch_assoc();
 
-    echo "<h1>Editar producto</h1>";
-
-    echo
-    " <form method='POST'>
-        Nombre: <input type='text' name='name' value='{$product['name']}' required><br>
-        Stock: <input type='number' name='stock' value='{$product['stock']}' required><br>
-        Precio: <input type='number' step='0.01' name='price' value='{$product['price']}' required><br>
-        <button>Actualizar producto</button>
-    </form>";
+    require 'views/product/edit.php';
 }
 
 // Lógica de enrutamiento del Logout
