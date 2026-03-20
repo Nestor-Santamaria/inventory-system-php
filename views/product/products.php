@@ -1,3 +1,5 @@
+<?php require 'views/layout/header.php'; ?>
+
 <h2>Lista de Productos</h2>
 
 <a href="?route=create-product">Crear producto</a><br><br>
@@ -10,3 +12,5 @@
     <a href="?route=delete-product&id=<?= $row['id'] ?>">Eliminar</a>
     <br>
 <?php endwhile ?>
+
+<?php require 'views/layout/footer.php'; ?>

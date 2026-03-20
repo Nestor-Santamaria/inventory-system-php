@@ -1,3 +1,5 @@
+<?php require 'views/layout/header.php'; ?>
+
 <h1>Editar producto</h1>
 
 <form method='POST'>
@@ -7,3 +9,5 @@
 
     <button>Actualizar producto</button>
 </form>
+
+<?php require 'views/layout/footer.php'; ?>
