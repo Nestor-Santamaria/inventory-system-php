@@ -7,7 +7,7 @@
     Stock: <input type='number' name='stock' value='<?=$product['stock']?>' required><br>
     Precio: <input type='number' step='0.01' name='price' value='<?=$product['price']?>' required><br>
 
-    <button>Actualizar producto</button>
+    <button class="btn btn-primary">Actualizar producto</button>
 </form>
 
 <?php require 'views/layout/footer.php'; ?>

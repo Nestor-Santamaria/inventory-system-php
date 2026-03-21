@@ -14,9 +14,9 @@ function show_flash()
 {
     if (isset($_SESSION['flash'])) {
 
-        $color = $_SESSION['flash']['type'] === 'error' ? 'red' : 'green';
+        $type = $_SESSION['flash']['type'] === 'error' ? 'danger' : 'success';
 
-        echo "<p style='color:$color'>" . $_SESSION['flash']['message'] . "</p>";
+        echo "<p class='alert alert-$type'>" . $_SESSION['flash']['message'] . "</p>";
 
         unset($_SESSION['flash']);
     }
@@ -81,9 +81,7 @@ elseif ($route === 'dashboard') {
         exit;
     }
 
-    echo "Bienvenido al dashboard <br><br>";
-    echo "<a href='?route=products'>Ir a productos</a><br>";
-    echo "<a href='?route=logout'>Cerrar sesión</a>";
+    require 'views/dashboard.php';
 }
 
 

@@ -7,5 +7,5 @@
     <br><br>
     <input type="password" name="password" placeholder="Password">
     <br><br>
-    <button type="submit">Entrar</button>
+    <button class="btn btn-primary" type="submit">Entrar</button>
 </form>
