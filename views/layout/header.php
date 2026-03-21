@@ -7,32 +7,9 @@
 </head>
 
 <body>
+    
+    <?php require 'views/layout/navbar.php'; ?>
 
-    <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
-        <div class="container-fluid">
-
-            <a class="navbar-brand" href="?route=dashboard">
-                Sistema de Inventario
-            </a>
-
-        </div>
-
-        <a class="btn btn-outline-light me-2" href="?route=dashboard">
-            Dashboard
-        </a>
-
-        <a class="btn btn-outline-light me-2" href="?route=products">
-            Productos
-        </a>
-
-        <a class="btn btn-outline-light me-2" href="?route=logout">
-            Cerrar
-        </a>
-
-    </nav>
-
-    <hr>
-
-    <div class="container mt-4">
+    <div class="container mt-5">
 
         <?php show_flash(); ?>
