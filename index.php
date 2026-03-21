@@ -2,6 +2,26 @@
 
 session_start(); // Inicia sesión
 
+function set_flash($msg, $type = 'success')
+{
+    $_SESSION['flash'] = [
+        'message' => $msg,
+        'type' => $type
+    ];
+}
+
+function show_flash()
+{
+    if (isset($_SESSION['flash'])) {
+
+        $color = $_SESSION['flash']['type'] === 'error' ? 'red' : 'green';
+
+        echo "<p style='color:$color'>" . $_SESSION['flash']['message'] . "</p>";
+
+        unset($_SESSION['flash']);
+    }
+}
+
 require 'config/database.php'; // Incluye la conexión a la base de datos
 
 $route = $_GET['route'] ?? 'home'; // Obtiene la ruta, por defecto 'home'
@@ -43,7 +63,7 @@ if ($route === 'login') {
 
             exit;
         } else {
-            echo "Credenciales incorrectas. Inténtalo de nuevo.";
+            set_flash("Credenciales incorrectas. Inténtalo de nuevo.", 'error');
         }
 
         exit;
@@ -72,6 +92,7 @@ elseif ($route === 'products') {
 
     // Verificamos si el usuario está autenticado
     if (!isset($_SESSION['user'])) {
+        var_dump($_SESSION['user']);
         header("Location: ?route=login");
         exit;
     }
@@ -92,15 +113,34 @@ elseif ($route === 'create-product') {
 
     // Aquí se procesaría el formulario de creación de producto
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $name = $_POST['name'] ?? '';
-        $stock = $_POST['stock'] ?? 0;
-        $price = $_POST['price'] ?? 0.00;
+        $name = $_POST['name'];
+        $stock = $_POST['stock'];
+        $price = $_POST['price'];
+
+        if (empty($name)) {
+            set_flash('El nombre del producto es obligatorio.', 'error');
+            header('Location: ?route=create-product');
+            exit;
+        }
+
+        if (empty($stock) || $stock < 0) {
+            set_flash('El stock del producto es obligatorio y no puede ser negativo.', 'error');
+            header('Location: ?route=create-product');
+            exit;
+        }
+
+        if (empty($price) || $price <= 0) {
+            set_flash('El precio del producto es obligatorio y no puede ser negativo o cero.', 'error');
+            header('Location: ?route=create-product');
+            exit;
+        }
 
         // Preparar la consulta para insertar el nuevo producto en la base de datos
         $stmt = $conn->prepare("INSERT INTO products (name, stock, price) VALUES (?,?,?)");
         $stmt->bind_param("sid", $name, $stock, $price);
         $stmt->execute();
 
+        set_flash('Se ha creado el producto: ' . $name . ' correctamente.');
         header('Location: ?route=products');
         exit;
     }
@@ -121,11 +161,15 @@ elseif ($route === 'delete-product') {
     // Obtiene el ID del producto a eliminar de la URL
     $id = $_GET['id'] ?? null;
 
+
     if ($id) {
+
         $stmt = $conn->prepare('DELETE FROM products WHERE id = ?');
         $stmt->bind_param('i', $id);
         $stmt->execute();
 
+
+        set_flash('Se ha eliminado el producto correctamente.');
         header('Location: ?route=products');
         exit;
     }
@@ -150,10 +194,29 @@ elseif ($route === 'edit-product') {
         $stock = $_POST['stock'];
         $price = $_POST['price'];
 
+        if (empty($name)) {
+            set_flash('El nombre del producto es obligatorio.', 'error');
+            header('Location: ?route=edit-product&id=' . $id);
+            exit;
+        }
+
+        if (empty($stock) || $stock < 0) {
+            set_flash('El stock del producto es obligatorio y no puede ser negativo.', 'error');
+            header('Location: ?route=edit-product&id=' . $id);
+            exit;
+        }
+
+        if (empty($price) || $price <= 0) {
+            set_flash('El precio del producto es obligatorio y no puede ser negativo o cero.', 'error');
+            header('Location: ?route=edit-product&id=' . $id);
+            exit;
+        }
+
         $stmt = $conn->prepare('UPDATE products SET name = ?, stock = ?, price = ? WHERE id = ?');
         $stmt->bind_param('sidi', $name, $stock, $price, $id);
         $stmt->execute();
 
+        set_flash('Se ha actualizado el producto: ' . $name . ' correctamente.');
         header('Location: ?route=products');
         exit;
     }

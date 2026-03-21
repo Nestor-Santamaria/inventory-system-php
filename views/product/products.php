@@ -9,7 +9,10 @@
     <?= $row['stock'] ?> |
     $<?= $row['price'] ?> |
     <a href="?route=edit-product&id=<?= $row['id'] ?>">Editar</a> |
-    <a href="?route=delete-product&id=<?= $row['id'] ?>">Eliminar</a>
+    <a href="?route=delete-product&id=<?= $row['id'] ?>"
+        onclick="return confirm('Estas seguro de eliminar este producto?')">
+        Eliminar
+    </a>
     <br>
 <?php endwhile ?>
 

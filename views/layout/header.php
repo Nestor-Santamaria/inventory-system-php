@@ -8,3 +8,5 @@
 <h1>Sistema de Inventario</h1>
 
 <hr>
+
+<?php show_flash(); ?>
