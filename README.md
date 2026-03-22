@@ -1,3 +1,7 @@
+Sistema web de gestión de inventario desarrollado en PHP puro utilizando arquitectura MVC progresiva y Bootstrap para la interfaz.
+
+---
+
 # Inventory Management System (PHP)
 
 Sistema web de gestión de inventario desarrollado en PHP puro con MySQL y Bootstrap.
@@ -26,7 +30,6 @@ Este proyecto permite administrar productos mediante un panel administrativo mod
 - PHP (sin framework)
 - MySQL
 - Bootstrap 5
-- Composer (opcional)
 
 ---
 
@@ -43,6 +46,11 @@ Este proyecto permite administrar productos mediante un panel administrativo mod
 3. Configurar conexión: [config/database.php](config/database.php).
 
 4. Ejecutar proyecto en XAMPP: http://localhost/inventory-system-php/
+
+## 🔑 Usuario Demo
+
+Email: admin@test.com  
+Password: 123456
 
 ---
 
@@ -64,6 +72,5 @@ Este proyecto permite administrar productos mediante un panel administrativo mod
 
 ## 👨‍💻 Autor
 
-Néstor Santamaría
-Ingeniero en Sistemas y Computación
+Néstor Santamaría - Ingeniero en Sistemas y Computación
 
