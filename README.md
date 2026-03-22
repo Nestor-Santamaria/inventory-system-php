@@ -1,29 +1,69 @@
-# Inventory System PHP
+# Inventory Management System (PHP)
 
-Sistema web de inventario desarrollado en PHP puro con MySQL.
+Sistema web de gestión de inventario desarrollado en PHP puro con MySQL y Bootstrap.
 
-## Funcionalidades
+Este proyecto permite administrar productos mediante un panel administrativo moderno que incluye autenticación, métricas del inventario y alertas de bajo stock.
 
-- Autenticación con sesiones
+---
+
+## 🚀 Funcionalidades
+
+- Autenticación de usuarios con sesiones
 - CRUD completo de productos
+- Dashboard con métricas:
+  - Valor total del inventario
+  - Total de unidades en inventario
+  - Productos con bajo stock (alerta ≤ 5)
 - Validaciones backend
-- Mensajes flash
-- Confirmación antes de eliminar
-- UI con Bootstrap
+- Mensajes flash de confirmación
+- Interfaz moderna con Bootstrap
+- Arquitectura MVC progresiva (Controller para Dashboard)
 
-## Tecnologías
+---
 
-- PHP
+## 🛠️ Tecnologías utilizadas
+
+- PHP (sin framework)
 - MySQL
-- Bootstrap
+- Bootstrap 5
+- Composer (opcional)
 
-## Instalación
+---
 
-1. Clonar repositorio
-2. Importar base de datos
-3. Configurar conexión en config/database.php
-4. Ejecutar en XAMPP
+## ⚙️ Instalación
 
-## Autor
+1. Clonar repositorio:
 
-Nestor Santamaria
+```TERMINAL
+    git clone https://github.com/Nestor-Santamaria/inventory-system-php.git
+```
+
+2. Crear base de datos: [config/database.sql](config/database.sql)
+
+3. Configurar conexión: [config/database.php](config/database.php).
+
+4. Ejecutar proyecto en XAMPP: http://localhost/inventory-system-php/
+
+---
+
+## 📸 Screenshots
+
+### Login
+
+![Login](screenshots/login.png)
+
+### Dashboard
+
+![Dashboard](screenshots/dashboard.png)
+
+### Lista de productos
+
+![Productos](screenshots/productos.png)
+
+---
+
+## 👨‍💻 Autor
+
+Néstor Santamaría
+Ingeniero en Sistemas y Computación
+
