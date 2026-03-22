@@ -81,7 +81,10 @@ elseif ($route === 'dashboard') {
         exit;
     }
 
-    require 'views/dashboard.php';
+    require 'app/controllers/DashboardController.php';
+
+    $controller = new DashboardController();
+    $controller->index($conn);
 }
 
 
