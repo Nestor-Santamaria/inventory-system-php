@@ -18,7 +18,7 @@ CREATE TABLE products (
 -- Insertar datos de prueba
 
 INSERT INTO users (email, password) VALUES 
-('admin@test.com', '$2y$10$wH8Qx9V0c2jX3Xb8mC8lUuXkFz9uQeJm9G7Q1YwPp6vYwZk8m9Q2G');
+('admin@test.com', '12345');
 
 INSERT INTO products (name, stock, price) VALUES
 ('Laptop Lenovo ThinkPad', 10, 850.00),

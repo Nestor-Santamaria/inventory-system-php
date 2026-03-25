@@ -59,11 +59,13 @@ if ($route === 'login') {
 
         if ($user && $user['password'] === $password) {
             $_SESSION['user'] = $email; // Guarda el email en la sesión
-            header(('Location: ?route=dashboard')); // Redirige a un dashboard
+            
+            header('Location: ?route=dashboard'); // Redirige a un dashboard
 
             exit;
         } else {
             set_flash("Credenciales incorrectas. Inténtalo de nuevo.", 'error');
+            header('Location: ?route=login'); // Redirige a login
         }
 
         exit;
