@@ -29,6 +29,10 @@ $route = $_GET['route'] ?? 'home'; // Obtiene la ruta, por defecto 'home'
 /** Rutas del sistema 
  * - 'home': Página principal del sistema de inventario
  * - 'login': Página de inicio de sesión (en construcción)
+ * 
+ * Ejemplo de url:
+ * http://localhost:8080/?route=login
+ * http://localhost:8080/?route=dashboard
  */
 
 

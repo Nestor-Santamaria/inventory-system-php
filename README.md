@@ -50,7 +50,7 @@ Este proyecto permite administrar productos mediante un panel administrativo mod
 ## 🔑 Usuario Demo
 
 Email: admin@test.com  
-Password: 123456
+Password: 12345
 
 ---
 

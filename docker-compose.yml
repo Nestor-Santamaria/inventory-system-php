@@ -1,0 +1,18 @@
+services:
+  web:
+    build: .
+    container_name: inventory-web
+    networks:
+      - dev-network
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www/html
+    restart: always
+
+volumes:
+  db_data:
+
+networks:
+  dev-network:
+    external: true
